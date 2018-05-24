@@ -157,7 +157,6 @@
             let requirePrice = (rule, value, callback) => {
                 var re = /^[0-9]+.?[0-9]*$/
                 if (re.test(value)) {
-                    this.itemForm.price = (this.itemForm.price / 1).toFixed(2)
                     callback()
                 } else {
                     callback("请输入商品价格")
@@ -409,12 +408,6 @@
                 this.$refs[itemForm].validate(async (valid) => {
                     if (valid) {
                         try {
-                            // 修改单位为分，并将变量作为number
-                            Object.defineProperty(this.itemForm, "price", {
-                                value: (Number(this.itemForm.price)) * 100,
-                                writable: true,
-                                configurable: true
-                            })
                             Object.defineProperty(this.itemForm, "weight", {
                                 value: (Number(this.itemForm.weight)) * 100,
                                 writable: true,
@@ -509,17 +502,6 @@
                 this.$refs[itemForm].validate(async (valid) => {
                     if (valid) {
                         try {
-                            // 修改单位为分，并将变量作为number
-                            Object.defineProperty(this.itemForm, "price", {
-                                value: (Number(this.itemForm.price)) * 100,
-                                writable: true,
-                                configurable: true
-                            })
-                            Object.defineProperty(this.itemForm, "weight", {
-                                value: (Number(this.itemForm.weight)) * 100,
-                                writable: true,
-                                configurable: true
-                            })
                             // 新增商品参数
                             this.itemForm.paramData = JSON.stringify(this.myItemParamForm.itemParamData)
                             await updateItem(this.itemForm)

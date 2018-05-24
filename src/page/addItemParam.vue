@@ -49,7 +49,7 @@
 
                         <el-form-item
                             v-for="(curr_param, num) in itemParamForm.groups[index].params"
-                            :label="'|-------参数' + (num + 1)"
+                            :label="'|-----参数' + (num + 1)"
                             style="margin-top: 20px;">
                             <el-input style="width: 260px;"
                                       v-model="curr_param.k"

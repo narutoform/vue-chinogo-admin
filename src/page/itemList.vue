@@ -43,7 +43,6 @@
                 <el-table-column
                     prop="price"
                     label="价格 (元)"
-                    :formatter="formatPrice"
                     width="120">
                 </el-table-column>
                 <el-table-column
@@ -202,14 +201,6 @@
                     .catch(err => {
                         this.$message.error("请求商品列表错误")
                     })
-            },
-            // 格式化钱
-            formatPrice(row, column, cellValue) {
-                // 如果该值是数字类型
-                if (!isNaN(cellValue)) {
-                    return (cellValue / 100).toFixed(2)
-                }
-                return 0
             },
             // 批量删除商品
             deleteItems() {
